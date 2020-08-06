@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counting</title>
+</head>
+<body>
+    <h1>Counts: {{text_len}}</h1>
+    <!-- url 'routeName' ，可以mapping到route name屬性，這是比較好的寫法-->
+    <a href="{% url 'home' %}">Start again</a>
+    <h2>Content: {{ content }}</h2>
+    <h2>Word freq</h2>
+    <!-- 難怪django的template被說很難用，確實寫起來比較複雜，而且這種寫法有點把script搬到HTML之中，看起來很髒
+         python的forLoop特性有發展在這個template syntax之中，可以依據需求放多個var來承接iterable物件中內容
+    -->
+    {% for word, freq in word_number %}
+    {{ word }} - {{ freq }}
+    <br>
+    {% endfor %}
+</body>
+</html>

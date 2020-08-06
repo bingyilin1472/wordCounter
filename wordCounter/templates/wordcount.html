@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Count</title>
+    <style>
+        input{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>WORD COUNT</h1>
+    <!-- 連結到url裡面的name為count的path，常用的手段   -->
+    <form action="{% url 'count' %}">
+        <!-- textarea是多欄輸入欄位，rows/cols是用來定義它的大小(聽說CSS更好用)
+             表單中的name屬性，主要是讓表單commit之後能辨識各數據於表單之中
+             譬如你表單中可能有name="fullName"、name="email"
+             因為表單有許多不同性質的內容，因此需要加上name屬性才能辨識做處理
+        -->
+        <textarea name="fulltext" cols="40" rows="10"></textarea><br />
+        <!-- 他會送處一個名碼內容，?fulltext= ....(上面輸入內容)，應該是一個get request-->
+        <br />
+        <input type="submit" value="Count!" />
+        <!-- onclick="location.href='...'"  可以給button設定點擊後連結，由於裡外都要引號
+             因此要用雙引、單引作區別，而且就算引號內部，一樣能注入{{ }}或{%  %}
+        -->
+        <input type="button" onclick="location.href='{% url 'info' %}'" value="About">
+    </form>
+
+</body>
+</html>
+
